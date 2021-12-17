@@ -1,0 +1,5 @@
+<launch>
+
+    <node pkg="custom_messages" type="sub_custom" name="my_subscriber" output="screen" />
+
+</launch>

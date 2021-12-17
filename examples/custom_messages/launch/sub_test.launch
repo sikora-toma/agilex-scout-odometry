@@ -1,0 +1,8 @@
+ <launch>
+
+    <node pkg="tf" type="static_transform_publisher" name="map_broadcaster" args="0 0 0 0 0 0 world map 1000" />
+    <node pkg="tf" type="static_transform_publisher" name="odom_broadcaster" args="0 0 0 0 0 0 map odom 1000" />
+    <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0 0 0 0 odom base_link 1000" />
+    <node pkg="custom_messages" type="sub_custom" name="my_subscriber" output="screen" />
+
+</launch>

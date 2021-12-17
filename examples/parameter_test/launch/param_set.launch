@@ -1,0 +1,7 @@
+<launch>
+
+ <param name="name" value="second" />
+ 
+ <node pkg="parameter_test" name="param_first" type="param_first" output="screen"/>
+
+</launch>
