@@ -1,7 +1,7 @@
 # Odometry calculation for AgileX Robotics SCOUT 2.0
 Project for the Robotics course 2020/2021, offered by Politecnico di Milano.
 Given the RPM of each motor of the robot, compute odometry using approximate skid steering kinematics.
-The project is written in ROS(C++), an open-source collection of robotics frameworks.
+The project is written in **ROS(C++)**, an open-source collection of robotics frameworks.
 
 
 Robot - AgileX Robotics SCOUT 2.0 ([global.agilex.ai/products/scout-2-0](https://global.agilex.ai/products/scout-2-0))
