@@ -1,0 +1,70 @@
+Robotics @ Politecnico di Milano
+Homework No. 1
+
+10779508
+Toma Sikora
+
+Files:
+-bags
+  - files containing recorded data from the AgileX Scout robot: bag1, bag2, bag3
+-cfg
+  - file containing the definition of the dynamicly reconfigurable integration method (Euler or Runge-Kutta) in python: parameters.cfg
+-launch
+  - file with which you can run the desired bag, set the needed parameters, run the nodes, and prepare the environment: lab.launch
+-msg
+  - flie containing the definitions of the custom messages for the motor speed and the custom odometry: MotorSpeed.msg and OdometryCustom.msg
+-src
+  - files containing the source code of the nodes for parsing the pose of the robot, and calculating the odometry: pose_parser.cpp and odometry_calculation.cpp
+-srv
+  - file containing the definition of the service used to reset the odometry to a given pose: ResetOdometry.srv
+
+tutorial.txt
+  - file containing the description and the instructions for the use of the code for the first homework for the Robotics course
+
+
+Parameters:
+  Name: "x0"        Description: the initial x value of the robots position.
+  Name: "y0"        Description: the initial y value of the robots position.
+  Name: "xtheta0"   Description: the initial theta value of the robots position.
+
+  These parameters are used to set the initial pose of the robot at the beginning of the execution according to the bag.
+
+TF tree:
+
+        world
+      /      \
+  map         odometry_calculated
+    I
+  odom
+    I
+  base_link
+
+  Name: world                 Description: the root node of the tf tree, representing the real world.
+  Name: map                   Description: the 
+  Name: odometry_calculated   Description: the frame of the robot whose odometry is being calculated.
+  Name: base_link             Description: the position of the sensor in relation to the robot. 
+
+
+Custom message structure:
+  Name: MotorSpeed.msg      Description: a message used to read the rpm of the robots wheel. Containing the Header and the float value of the rpm.
+  Name: OdometryCustom.msg  Description: a message used to publish the claculated odometry (Odometry type) and the currently used integration method(string).
+
+How to start the nodes:
+  To run, "roslaunch robotics_hw1 lab.launch" should be typed to the terminal.
+  The launch file starts the pose_parser and odometry_calculation nodes, sets up the parameters.
+
+
+Other:
+  - to launch with a bag, use lab_with_bag.launch file
+  - to change the initial pose of the robot, you can change the x0, y0, and theta0 parameters in the launch file
+  - set the intergration method using the rqt reconfigure tool (terminal command: "rosrun rqt_reconfigure rqt_reconfigure")
+  - set the current x, y, and theta variables to specific values by calling the reset_odometry_to_given_pose service
+    (e.g. terminal: "rosservice call /reset_odometry_to_given_pose 10 10 10")
+
+  - the three given bags have different starting poses of the robot. Because of that,
+    I approximated the pose so that, at the beginning, the robots pose can be set to the initial pose.
+    The values of the parameters are approx.:
+            x0            y0              theta0
+      bag1  0.0           0.0             0.0
+      bag2 -2.81132697617 0.784711979093  3.05
+      bag3 -2.28603390243 -1.44419248415  4.46  

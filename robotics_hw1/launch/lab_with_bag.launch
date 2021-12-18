@@ -1,0 +1,15 @@
+<launch>
+  <param name="/use_sim_time" value="true"/>
+  <param name="x0" value="0.0" type="double"/>
+  <param name="y0" value="0.0" type="double"/>
+  <param name="theta0" value="0.0" type="double"/>
+  <arg name="bag_file_name" value="bag1"/>
+  <node pkg="rosbag" type="play" name="player" args="--clock $(find robotics_hw1)/bags/$(arg bag_file_name).bag"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="map_broadcaster" args="0 0 0 0 0 0 world map 1000" />
+  <node pkg="tf" type="static_transform_publisher" name="odom_broadcaster" args="0 0 0 0 0 0 map odom 1000" />
+  <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0 0 0 0 odom base_link 1000" />
+  <node pkg="robotics_hw1" type="pose_parser" name="my_pose_parser" output="screen" />
+  <node pkg="robotics_hw1" type="odometry_calculation" name="my_odometry_calculation" output="screen" />
+
+</launch>
