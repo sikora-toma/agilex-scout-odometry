@@ -33,7 +33,7 @@ File structure
 
 How to start the nodes
 ---
-To run, type **"roslaunch robotics_hw1 lab.launch"** in the terminal.
+To run, clone the project, build, and run with **"roslaunch robotics_hw1 lab.launch"**.
 The launch file starts the pose_parser and odometry_calculation nodes, sets up the parameters.
 
 To launch with a bag, use **"roslaunch robotics_hw1 lab_with_bag.launch"**
